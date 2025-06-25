@@ -55,15 +55,3 @@ class Quiz {
         return sum/this.questions.length;
     }
 }
-
-const q1 = new Question("1*2",[2, 3, 4, 6], 2, 2)
-q1.shuffleChoices();
-
-const q2 = new Question("4+2",[7, 8, 4, 6], 6, 2)
-q2.shuffleChoices();
-
-const game = new Qiuz([q1, q2], 2, 1)
-
-
-
-console.log(q.choices)
