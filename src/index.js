@@ -60,7 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /************  TIMER  ************/
 
-  let timer;
+  function timerHandler(){
+    quiz.timeRemaining--;
+    if (quiz.timeRemaining > 0) {
+      const minutes = Math.floor(quiz.timeRemaining / 60).toString().padStart(2, "0");
+      const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
+
+      const timeRemainingContainer = document.getElementById("timeRemaining");
+      timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+    } else {
+      quizView.style.display = "none";
+      endView.style.display = "block";
+      clearInterval(timer);
+
+      showResults();
+
+    }
+
+  }
+
+  let timer = setInterval(timerHandler, 1000);
+
 
 
   /************  EVENT LISTENERS  ************/
@@ -208,5 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quiz.correctAnswers = 0;
     quiz.shuffleQuestions();
     showQuestion();
+    quiz.timeRemaining = 120;
+    timer = setInterval(timerHandler, 1000);
   }
 });
