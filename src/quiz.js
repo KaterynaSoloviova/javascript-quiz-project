@@ -52,6 +52,6 @@ class Quiz {
             return acc + question.difficulty
         }, 0);
 
-        return sum/this.questions.length;
+        return sum / this.questions.length;
     }
 }
